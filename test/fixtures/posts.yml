@@ -4,12 +4,12 @@ one:
   user: one
   title: MyString
   content: MyString
-  slug: MyString
-  status: MyString
+  slug: my-string
+  status: public
 
 two:
   user: two
-  title: MyString
-  content: MyString
-  slug: MyString
-  status: MyString
+  title: AnotherString
+  content: AnotherString
+  slug: another-string
+  status: private
