@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby "3.3.5"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
@@ -66,4 +68,4 @@ end
 
 gem "devise", "~> 4.9"
 
-gem "faker", "~> 3.5", :group => :development
+gem "faker", "~> 3.5", group: :development
