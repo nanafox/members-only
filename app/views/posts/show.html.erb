@@ -1,0 +1,18 @@
+<div>
+  <%= link_to "Back to posts", posts_path, class: "btn btn-secondary" %>
+  <% if user_signed_in? && current_user == @post.user %>
+    <%= link_to "Edit", edit_post_path(@post), class: "btn btn-dark" %>
+  <% end %>
+
+  <% if user_signed_in? && current_user == @post.user %>
+    <%= link_to "Delete",
+    @post,
+    data: {
+      turbo_method: :delete,
+      confirm: "Are you sure?",
+      turbo_confirm: "Are you sure?",
+    },
+    class: "btn btn-danger" %>
+  <% end %>
+</div>
+<%= render @post %>

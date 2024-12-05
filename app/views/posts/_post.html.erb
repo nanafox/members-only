@@ -1,0 +1,11 @@
+<article <%= dom_id(post) %>>
+  <h2 class="card-title"><%= post.title %></h2>
+  <% if user_signed_in? %>
+    <p>Posted by:
+      <%= "#{post.user.first_name} #{post.user.last_name}" %>
+    </p>
+  <% end %>
+  <p class="card-text">
+    <%= post.content %>
+  </p>
+</article>
