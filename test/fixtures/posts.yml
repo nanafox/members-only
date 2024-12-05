@@ -3,13 +3,13 @@
 one:
   user: one
   title: MyString
-  body: MyString
+  content: MyString
   slug: MyString
   status: MyString
 
 two:
   user: two
   title: MyString
-  body: MyString
+  content: MyString
   slug: MyString
   status: MyString
