@@ -1,7 +1,10 @@
 require "application_system_test_case"
 
 class PostsTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
   setup do
+    @user = users(:one)
+    sign_in @user
     @post = posts(:one)
   end
 
@@ -14,11 +17,10 @@ class PostsTest < ApplicationSystemTestCase
     visit posts_url
     click_on "New post"
 
-    fill_in "Body", with: @post.body
+    find("trix-editor").set("New Post Title")
     fill_in "Slug", with: @post.slug
     fill_in "Status", with: @post.status
     fill_in "Title", with: @post.title
-    fill_in "User", with: @post.user_id
     click_on "Create Post"
 
     assert_text "Post was successfully created"
@@ -27,13 +29,12 @@ class PostsTest < ApplicationSystemTestCase
 
   test "should update Post" do
     visit post_url(@post)
-    click_on "Edit this post", match: :first
+    click_on "Edit", match: :first
 
-    fill_in "Body", with: @post.body
+    find("trix-editor").set("Updated content")
     fill_in "Slug", with: @post.slug
     fill_in "Status", with: @post.status
     fill_in "Title", with: @post.title
-    fill_in "User", with: @post.user_id
     click_on "Update Post"
 
     assert_text "Post was successfully updated"
@@ -42,7 +43,9 @@ class PostsTest < ApplicationSystemTestCase
 
   test "should destroy Post" do
     visit post_url(@post)
-    click_on "Destroy this post", match: :first
+    page.accept_confirm do
+      click_on "Delete", match: :first
+    end
 
     assert_text "Post was successfully destroyed"
   end
