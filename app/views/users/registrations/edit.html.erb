@@ -1,86 +1,90 @@
-<h2>Edit
-  <%= resource_name.to_s.humanize %></h2>
+<div class="w-50 m-auto">
+  <h2>Edit
+    <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="row g-3">
-    <div class="field col">
-      <%= f.label :first_name, class: "form-label" %><br>
-      <%= f.text_field :first_name,
-                   class: "form-control",
-                   placeholder: "John",
-                   autocomplete: "first_name" %>
+    <div class="row g-3">
+      <div class="field col">
+        <%= f.label :first_name, class: "form-label" %><br>
+        <%= f.text_field :first_name,
+                     class: "form-control",
+                     placeholder: "John",
+                     autocomplete: "first_name" %>
+      </div>
+      <div class="field col">
+        <%= f.label :last_name, class: "form-label" %><br/>
+        <%= f.text_field :last_name,
+                     autocomplete: "last_name",
+                     class: "form-control",
+                     placeholder: "Doe" %>
+      </div>
     </div>
-    <div class="field col">
-      <%= f.label :last_name, class: "form-label" %><br/>
-      <%= f.text_field :last_name,
-                   autocomplete: "last_name",
-                   class: "form-control",
-                   placeholder: "Doe" %>
-    </div>
-  </div>
 
-  <div class="row g-3">
-    <div class="field col">
-      <%= f.label :username, class: "form-label" %><br>
-      <%= f.text_field :username, class: "form-control", placeholder: "jdoe" %>
+    <div class="row g-3">
+      <div class="field col">
+        <%= f.label :username, class: "form-label" %><br>
+        <%= f.text_field :username, class: "form-control", placeholder: "jdoe" %>
+      </div>
+      <div class="field col">
+        <%= f.label :email, class: "form-label" %><br/>
+        <%= f.email_field :email,
+                      placeholder: "joe@email.com",
+                      autocomplete: "email",
+                      class: "form-control" %>
+      </div>
     </div>
-    <div class="field col">
-      <%= f.label :email, class: "form-label" %><br/>
-      <%= f.email_field :email,
-                    placeholder: "joe@email.com",
-                    autocomplete: "email",
-                    class: "form-control" %>
-    </div>
-  </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for:
-      <%= resource.unconfirmed_email %></div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for:
+        <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="row">
+      <div class="field col">
+        <%= f.label :password, class: "form-label" %>
+        <i>(leave blank if you don't want to change it)</i><br/>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+        <% if @minimum_password_length %>
+          <br/>
+          <em><%= @minimum_password_length %>
+            characters minimum</em>
+        <% end %>
+      </div>
+
+      <div class="field col mt-4">
+        <%= f.label :password_confirmation, class: "form-label" %><br/>
+        <%= f.password_field :password_confirmation,
+                         autocomplete: "new-password",
+                         class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :current_password, class: "form-label" %>
+      <i>(we need your current password to confirm your changes)</i><br/>
+      <%= f.password_field :current_password,
+                       autocomplete: "current-password",
+                       class: "form-control" %>
+    </div>
+
+    <div class="actions mt-2">
+      <%= f.submit "Update", class: "btn btn-dark" %>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password, class: "form-label" %>
-    <i>(leave blank if you don't want to change it)</i><br/>
-    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-    <% if @minimum_password_length %>
-      <br/>
-      <em><%= @minimum_password_length %>
-        characters minimum</em>
-    <% end %>
-  </div>
+  <h3 class="mt-4">Delete my account</h3>
 
-  <div class="field">
-    <%= f.label :password_confirmation, class: "form-label" %><br/>
-    <%= f.password_field :password_confirmation,
-                     autocomplete: "new-password",
-                     class: "form-control" %>
-  </div>
+  <div>Unhappy?
+    <%= button_to "Delete my account",
+    registration_path(resource_name),
+    data: {
+      confirm: "Are you sure?",
+      turbo_confirm: "Are you sure?",
+    },
+    class: "btn btn-danger",
+    method: :delete %></div>
 
-  <div class="field">
-    <%= f.label :current_password, class: "form-label" %>
-    <i>(we need your current password to confirm your changes)</i><br/>
-    <%= f.password_field :current_password,
-                     autocomplete: "current-password",
-                     class: "form-control" %>
-  </div>
-
-  <div class="actions mt-2">
-    <%= f.submit "Update", class: "btn btn-dark" %>
-  </div>
-<% end %>
-
-<h3 class="mt-4">Delete my account</h3>
-
-<div>Unhappy?
-  <%= button_to "Delete my account",
-  registration_path(resource_name),
-  data: {
-    confirm: "Are you sure?",
-    turbo_confirm: "Are you sure?",
-  },
-  class: "btn btn-danger",
-  method: :delete %></div>
-
-<%= link_to "Back", :back %>
+  <%= link_to "Back", :back %>
+</div>

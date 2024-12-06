@@ -25,9 +25,9 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark">
+      <nav class="navbar navbar-expand-lg bg-dark text-white mb-3">
         <div class="container-fluid">
-          <%= link_to "AuthPost", root_path, class: "navbar-brand" %>
+          <%= link_to "AuthPost", root_path, class: "navbar-brand text-white" %>
           <button
             class="navbar-toggler"
             type="button"
@@ -39,19 +39,21 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
               <li class="nav-item">
-                <%= link_to "Home", root_path, class: "nav-link active", aria_current: "page" %>
+                <%= link_to "Home",
+                root_path,
+                class: "nav-link active text-white",
+                aria_current: "page" %>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link text-white" href="#">About</a>
               </li>
               <li class="nav-item">
-
                 <li class="nav-item">
-                  <%= link_to "https://github.com/nanafox/members-only", class: "nav-link d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                    <i class="bi bi-github me-2"></i>Source Code
+                  <%= link_to "https://github.com/nanafox/members-only", class: "nav-link d-flex align-items-center text-decoration-none text-white", target: "_blank" do %>
+                    <i class="bi bi-github me-2 text-white"></i>Source Code
                   <% end %>
                 </li>
               </li>
@@ -68,16 +70,16 @@
             <div>
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <% if user_signed_in? %>
-                  <li nav-item><%= link_to "Profile", edit_user_registration_path, class: "nav-link" %></li>
-                  <li class="nav-item"><%= link_to "Sign out",
+                  <li nav-item><%= link_to "Profile", edit_user_registration_path, class: "nav-link text-white" %></li>
+                  <li class="nav-item text-white"><%= link_to "Sign out",
                     destroy_user_session_path,
                     data: {
                       turbo_method: :delete,
                     },
-                    class: "nav-link" %></li>
+                    class: "nav-link text-white" %></li>
                 <% else %>
-                  <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
-                  <li class="nav-item"><%= link_to "Sign in", new_user_session_path, class: "nav-link" %></li>
+                  <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link text-white" %></li>
+                  <li class="nav-item"><%= link_to "Sign in", new_user_session_path, class: "nav-link text-white" %></li>
                 <% end %>
               </ul>
             </div>
@@ -99,10 +101,7 @@
         <%= tag.div(class: "row") do %>
           <!-- About Section -->
           <%= tag.div(class: "col-md-4 mb-3") do %>
-            <h5>About Us</h5>
-            <p>We provide members-only content to our amazing community. Join us
-              and start sharing today!</p>
-
+            <h5>About</h5>
             <p>This project is part of the
               <%= link_to "The Odin Project",
               "https://theodinproject.com",
@@ -112,7 +111,7 @@
           <!-- Quick Links Section -->
           <%= tag.div(class: "col-md-4 mb-3") do %>
             <h5>Quick Links</h5>
-            <ul class="list-unstyled">
+            <ul class="list-unstyled d-flex align-items-center gap-3">
               <li><%= link_to "Home", root_path, class: "text-white text-decoration-none" %></li>
               <li><%= link_to "About", "#", class: "text-white text-decoration-none" %></li>
               <li><%= link_to "Register",
@@ -129,10 +128,11 @@
             <address>
               <strong>Maxwell Nana Forson</strong><br>
             </address>
-            <div id="links">
+            <div id="links" class="d-flex">
               <div>
                 <%= link_to "https://github.com/nanafox", class: "text-white me-3 d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                  <i class="bi bi-github me-2"></i>Connect with me on GitHub
+                  <i class="bi bi-github me-2"></i>
+                  GitHub
                 <% end %>
               </div>
 
@@ -144,19 +144,19 @@
 
               <div>
                 <%= link_to "https://wa.me/233594059579", class: "text-white me-3 d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                  <i class="bi bi-whatsapp me-2"></i>Send me a message
+                  <i class="bi bi-whatsapp me-2"></i>WhatsApp
                 <% end %>
               </div>
 
               <div>
                 <%= link_to "https://www.linkedin.com/in/maxwellnanaforson", class: "text-white me-3 d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                  <i class="bi bi-linkedin me-2"></i>Connect on LinkedIn
+                  <i class="bi bi-linkedin me-2"></i>LinkedIn
                 <% end %>
               </div>
 
               <div>
                 <%= link_to "https://www.mnforson.live", class: "text-white me-3 d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                  <i class="bi bi-house-door me-2"></i>Visit my Website
+                  <i class="bi bi-house-door me-2"></i>Website
                 <% end %>
               </div>
             </div>
@@ -165,7 +165,7 @@
         <%= tag.div(class: "text-center mt-3") do %>
           <small>&copy;
             <%= Time.current.year %>
-            Members Only. All rights reserved.</small>
+            AuthPost. All rights reserved.</small>
         <% end %>
       <% end %>
     <% end %>
