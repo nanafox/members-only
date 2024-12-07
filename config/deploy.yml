@@ -29,7 +29,6 @@ env:
     - RAILS_MASTER_KEY
   clear:
     SOLID_QUEUE_IN_PUMA: true
-    PORT: 8080
 
 # Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
 aliases:
