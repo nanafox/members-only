@@ -1,4 +1,4 @@
-<div class="mw-25 mx-auto mt-5">
+<div class="m-auto" style="max-width: 60%">
   <h2>Log in</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -11,7 +11,7 @@
                     class: "form-control" %>
     </div>
 
-    <div class="field form-group">
+    <div class="field form-group ">
       <%= f.label :password, class: "form-label" %><br/>
       <%= f.password_field :password,
                        placeholder: "Enter your password",

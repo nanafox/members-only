@@ -28,9 +28,9 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body class="vw-100">
+  <body class="text-white">
     <header>
-      <nav class="navbar navbar-expand-lg bg-dark text-white mb-3">
+      <nav class="navbar navbar-expand-lg bg-dark text-white">
         <div class="container-fluid text-white">
           <%= link_to "AuthPost", root_path, class: "navbar-brand text-white" %>
           <button
@@ -92,16 +92,22 @@
         </div>
       </nav>
     </header>
-    <main class="container">
-      <% if notice %>
-        <p class="notice alert alert-info mt-2" role="alert"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-warning mt-2" role="alert"><%= alert %></p>
-      <% end %>
-      <%= yield %>
-    </main>
-    <footer class="bg-dark text-white mt-5 py-4">
+    <section
+      id="main"
+      class="py-4"
+      style="background-color: rgba(33,37, 41, 0.95);"
+    >
+      <main class="container">
+        <% if notice %>
+          <p class="notice alert alert-info mt-2" role="alert"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-warning mt-2" role="alert"><%= alert %></p>
+        <% end %>
+        <%= yield %>
+      </main>
+    </section>
+    <footer class="bg-dark text-white py-4 position-relative">
       <div class="container">
         <div class="row">
           <!-- About Section -->

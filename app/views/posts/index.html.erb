@@ -17,16 +17,22 @@
 <% else %>
   <div id="posts">
     <% @posts.each do |post| %>
-      <article id="<%= dom_id(post) %>" class="card p-3">
-        <h2 class="card-title">
-          <%= link_to post.title, post_path(post), class: "link-opacity-75-hover" %>
-        </h2>
-        <% if user_signed_in? %>
-          <%= render "post_details", post: post %>
-        <% end %>
-        <p class="card-text">
-          <%= truncate(post.content.to_plain_text, length: 100) %>
-        </p>
+      <article id="<%= dom_id(post) %>" class="card p-2 text-bg-dark">
+        <div class="card-body">
+          <h2 class="card-title fs-4">
+            <%= link_to post.title,
+            post_path(post),
+            class:
+              "link-info link-offset-2 link-underline-opacity-75-hover text-decoration-none" %>
+          </h2>
+          <hr>
+          <% if user_signed_in? %>
+            <%= render "post_details", post: post %>
+          <% end %>
+          <p class="card-text">
+            <%= truncate(post.content.to_plain_text, length: 100) %>
+          </p>
+        </div>
       </article>
     <% end %>
   </div>

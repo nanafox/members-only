@@ -1,5 +1,6 @@
-<article <%= dom_id(post) %>>
-  <h2 class="card-title"><%= post.title %></h2>
+<article
+  <%= dom_id(post) %> class="card-body">
+  <h2 class="card-title fs-3 text-info"><%= post.title %></h2>
   <% if user_signed_in? %>
     <%= render "post_details", post: post %>
   <% end %>
