@@ -19,7 +19,7 @@ class PostsTest < ApplicationSystemTestCase
 
     find("trix-editor").set("New Post Title")
     fill_in "Slug", with: @post.slug
-    fill_in "Status", with: @post.status
+    select @post.status, from: "Status"
     fill_in "Title", with: @post.title
     click_on "Create Post"
 
@@ -33,7 +33,7 @@ class PostsTest < ApplicationSystemTestCase
 
     find("trix-editor").set("Updated content")
     fill_in "Slug", with: @post.slug
-    fill_in "Status", with: @post.status
+    select "private", from: "Status"
     fill_in "Title", with: @post.title
     click_on "Update Post"
 
