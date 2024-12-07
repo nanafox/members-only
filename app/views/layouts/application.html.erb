@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="author" content="Maxwell Nana Forson">
+    <meta
+      name="description"
+      content="AuthPost is a simple platform where authenticated users share insights about themselves and anything they want people to know about them. This is a TheOdinProject project."
+    >
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -23,13 +28,13 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
+  <body class="vw-100">
     <header>
       <nav class="navbar navbar-expand-lg bg-dark text-white mb-3">
-        <div class="container-fluid">
+        <div class="container-fluid text-white">
           <%= link_to "AuthPost", root_path, class: "navbar-brand text-white" %>
           <button
-            class="navbar-toggler"
+            class="navbar-toggler text-white bg-white"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -96,22 +101,22 @@
       <% end %>
       <%= yield %>
     </main>
-    <%= tag.footer(class: "bg-dark text-white mt-5 py-4 position-relative") do %>
-      <%= tag.div(class: "container") do %>
-        <%= tag.div(class: "row") do %>
+    <footer class="bg-dark text-white mt-5 py-4">
+      <div class="container">
+        <div class="row">
           <!-- About Section -->
-          <%= tag.div(class: "col-md-4 mb-3") do %>
+          <div class="col-12 col-md-4 mb-3">
             <h5>About</h5>
             <p>This project is part of the
               <%= link_to "The Odin Project",
               "https://theodinproject.com",
               class: "text-white link-opacity-75-hover" %>
               Ruby on Rails curriculum</p>
-          <% end %>
+          </div>
           <!-- Quick Links Section -->
-          <%= tag.div(class: "col-md-4 mb-3") do %>
+          <div class="col-12 col-md-4 mb-3">
             <h5>Quick Links</h5>
-            <ul class="list-unstyled d-flex align-items-center gap-3">
+            <ul class="list-unstyled d-flex flex-wrap gap-3">
               <li><%= link_to "Home", root_path, class: "text-white text-decoration-none" %></li>
               <li><%= link_to "About", "#", class: "text-white text-decoration-none" %></li>
               <li><%= link_to "Register",
@@ -121,53 +126,43 @@
                 new_user_session_path,
                 class: "text-white text-decoration-none" %></li>
             </ul>
-          <% end %>
+          </div>
           <!-- Contact Section -->
-          <%= tag.div(class: "col-md-4 mb-3") do %>
+          <div class="col-12 col-md-4 mb-3">
             <h5>Contact Me</h5>
             <address>
               <strong>Maxwell Nana Forson</strong><br>
             </address>
-            <div id="links" class="d-flex">
-              <div>
-                <%= link_to "https://github.com/nanafox", class: "text-white me-3 d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                  <i class="bi bi-github me-2"></i>
-                  GitHub
-                <% end %>
-              </div>
+            <div id="links" class="d-flex flex-wrap gap-2">
+              <%= link_to "https://github.com/nanafox", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
+                <i class="bi bi-github me-2"></i>GitHub
+              <% end %>
 
-              <div>
-                <%= link_to "https://x.com/_nanafox", class: "text-white me-3 d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                  <i class="bi bi-twitter me-2"></i>_nanafox
-                <% end %>
-              </div>
+              <%= link_to "https://x.com/_nanafox", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
+                <i class="bi bi-twitter me-2"></i>_nanafox
+              <% end %>
 
-              <div>
-                <%= link_to "https://wa.me/233594059579", class: "text-white me-3 d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                  <i class="bi bi-whatsapp me-2"></i>WhatsApp
-                <% end %>
-              </div>
+              <%= link_to "https://wa.me/233594059579", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
+                <i class="bi bi-whatsapp me-2"></i>WhatsApp
+              <% end %>
 
-              <div>
-                <%= link_to "https://www.linkedin.com/in/maxwellnanaforson", class: "text-white me-3 d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                  <i class="bi bi-linkedin me-2"></i>LinkedIn
-                <% end %>
-              </div>
+              <%= link_to "https://www.linkedin.com/in/maxwellnanaforson", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
+                <i class="bi bi-linkedin me-2"></i>LinkedIn
+              <% end %>
 
-              <div>
-                <%= link_to "https://www.mnforson.live", class: "text-white me-3 d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                  <i class="bi bi-house-door me-2"></i>Website
-                <% end %>
-              </div>
+              <%= link_to "https://www.mnforson.live", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
+                <i class="bi bi-house-door me-2"></i>Website
+              <% end %>
             </div>
-          <% end %>
-        <% end %>
-        <%= tag.div(class: "text-center mt-3") do %>
+          </div>
+        </div>
+
+        <div class="text-center mt-3">
           <small>&copy;
             <%= Time.current.year %>
             AuthPost. All rights reserved.</small>
-        <% end %>
-      <% end %>
-    <% end %>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
