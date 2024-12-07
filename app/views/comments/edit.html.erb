@@ -1,0 +1,11 @@
+<% content_for :title, "AuthPost | Edit comment" %>
+
+<h1>Edit your comment</h1>
+
+<%= render "form", comment: @comment, post: @post %>
+
+<br>
+
+<div>
+  <%= link_to "Back to Post", @post %>
+</div>

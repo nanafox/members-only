@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create, :edit, :update, :destroy]
+  end
+
   # devise_for :users
   devise_for :users,
     path: "auth",
     path_names: {
       sign_in: "login", sign_out: "logout",
       password: "secret", confirmation: "verification",
-      unlock: "unblock", registration: "register", sign_up: "sign_up"
+      unlock: "unblock", registration: "register", sign_up: "sign_up",
     },
     controllers: { registrations: "users/registrations" }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

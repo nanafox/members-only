@@ -1,0 +1,13 @@
+<%= form_with model: [@post, @comment || @post.comments.build], locals: true do |form| %>
+  <div class="mt-5">
+    <%= form.label :content, "Add your thoughts", class: "form-label" %>
+    <%= form.text_area :content,
+                   class: "form-control",
+                   required: true,
+                   placeholder: "Enter your thoughts here..." %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-dark mt-2" %>
+  </div>
+<% end %>
