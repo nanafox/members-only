@@ -1,9 +1,7 @@
 <article <%= dom_id(post) %>>
   <h2 class="card-title"><%= post.title %></h2>
   <% if user_signed_in? %>
-    <p>Posted by:
-      <%= "#{post.user.first_name} #{post.user.last_name}" %>
-    </p>
+    <%= render "post_details", post: post %>
   <% end %>
   <p class="card-text">
     <%= post.content %>

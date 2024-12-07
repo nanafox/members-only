@@ -1,5 +1,3 @@
-<% content_for :title, "AuthPost | Posts" %>
-
 <h1>Posts</h1>
 
 <% if user_signed_in? %>
@@ -24,9 +22,7 @@
           <%= link_to post.title, post_path(post), class: "link-opacity-75-hover" %>
         </h2>
         <% if user_signed_in? %>
-          <p>Posted by:
-            <%= "#{post.user.first_name} #{post.user.last_name}" %>
-          </p>
+          <%= render "post_details", post: post %>
         <% end %>
         <p class="card-text">
           <%= truncate(post.content.to_plain_text, length: 100) %>
