@@ -9,18 +9,24 @@
   )
 end
 
+# create one custom user for interactions
+User.create(
+  username: "jdoe", email: "jdoe@email.com",
+  first_name: "John", last_name: "Doe", password: "password",
+)
+
 # Get all 100 users in the database
 users = User.all
 
-# Generate 5 posts for each user, alternating between users
+# Generate posts for each user, alternating between users
 100.times do |i|
-  [ 10, 3, 1, 6 ].sample.times do
+  [ 5, 3, 1, 6 ].sample.times do
     Post.create(
       title: Faker::Lorem.sentence(word_count: [ 3, 5, 6 ].sample),
       content: Faker::Lorem.paragraph(sentence_count: [ 100, 10, 500, 1000 ].sample),
       user_id: users[i % users.length].id,  # Alternate between users
       slug: Faker::Internet.slug,
-      status: [ "public", "private" ].sample,
+      status: Visible::VALID_STATUSES.sample,
     )
   end
 end
