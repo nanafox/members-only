@@ -6,6 +6,16 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.order(created_at: :desc).limit(100)
+
+    # TODO: Add authorization to view posts based on the visibility status
+    # set by the owner of the post. So post authors will be the only ones to
+    # see posts they've marked as 'draft' or 'private'. And authenticated
+    # users can see 'public' and 'archived' posts.
+
+    # unauthenticated users should see only public posts
+    unless user_signed_in?
+      @posts = @posts.where(status: "public")
+    end
   end
 
   # GET /posts/1 or /posts/1.json
