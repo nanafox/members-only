@@ -1,6 +1,6 @@
 <div class="d-flex align-content-center gap-2">
   <p>Posted by:
-    <%= "#{post.user.first_name} #{post.user.last_name}" %>
+    <%= post.user.fullname %>
   </p>
   <div>
     <span class="badge round-pill <%= status_class(post.status) %>">

@@ -12,22 +12,17 @@
     >
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
-
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
-
   <body class="text-white">
     <header>
       <nav class="navbar navbar-expand-lg bg-dark text-white pt-2">
@@ -143,26 +138,21 @@
               <%= link_to "https://github.com/nanafox", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
                 <i class="bi bi-github me-2"></i>GitHub
               <% end %>
-
               <%= link_to "https://x.com/_nanafox", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
                 <i class="bi bi-twitter me-2"></i>_nanafox
               <% end %>
-
               <%= link_to "https://wa.me/233594059579", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
                 <i class="bi bi-whatsapp me-2"></i>WhatsApp
               <% end %>
-
               <%= link_to "https://www.linkedin.com/in/maxwellnanaforson", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
                 <i class="bi bi-linkedin me-2"></i>LinkedIn
               <% end %>
-
               <%= link_to "https://www.mnforson.live", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
                 <i class="bi bi-house-door me-2"></i>Website
               <% end %>
             </div>
           </div>
         </div>
-
         <div class="text-center mt-3">
           <small>&copy;
             <%= Time.current.year %>
