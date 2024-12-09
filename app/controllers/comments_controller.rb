@@ -61,6 +61,6 @@ class CommentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def comment_params
-    params.expect(comment: [:content]).merge({ user: current_user })
+    params.expect(comment: [ :content ]).merge({ user: current_user })
   end
 end
