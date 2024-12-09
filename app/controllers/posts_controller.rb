@@ -5,16 +5,18 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.includes(:comments).order(created_at: :desc).limit(30)
-
     # TODO: Add authorization to view posts based on the visibility status
     # set by the owner of the post. So post authors will be the only ones to
     # see posts they've marked as 'draft' or 'private'. And authenticated
     # users can see 'public' and 'archived' posts.
 
     # unauthenticated users should see only public posts
-    unless user_signed_in?
-      @posts = @posts.where(status: "public")
+    if user_signed_in?
+      @posts = Post.includes(:user, :rich_text_content).limit(30)
+    else
+      @posts = Post.includes(
+        :rich_text_content
+      ).where(status: "public").limit(30)
     end
   end
 
@@ -73,7 +75,9 @@ class PostsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
-    @post = Post.find(params.expect(:id))
+    @post = Post.includes(
+      :comments, :user, :rich_text_content
+    ).find(params.expect(:id))
   end
 
   # Only allow a list of trusted parameters through.

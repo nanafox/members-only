@@ -36,7 +36,7 @@
         <h3 class="fs-5">No comments</h3>
       <% else %>
         <h3 class="fs-5"><%= pluralize(@post.comments.count, "comment") %></h3>
-        <%= render @post.comments.order(created_at: :desc) %>
+        <%= render @post.comments %>
       </turbo-frame>
     <% end %>
   </div>
