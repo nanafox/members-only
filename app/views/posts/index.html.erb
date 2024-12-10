@@ -28,7 +28,7 @@
             <%= render "post_details", post: post %>
           <% end %>
           <p class="card-text">
-            <%= truncate(post.content.to_plain_text, length: 100) %>
+            <%= truncate(post.content.to_plain_text, length: 200) %>
           </p>
         </div>
       </article>
