@@ -23,7 +23,7 @@
 <% if user_signed_in? %>
   <%= render "comments/form", post: @post %>
 <% else %>
-  <%= button_to "Sign to add a comment!",
+  <%= button_to "Log in to add a comment!",
   new_user_session_path,
   class: "btn btn-warning" %>
 <% end %>
