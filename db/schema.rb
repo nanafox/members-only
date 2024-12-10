@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_07_155948) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_10_085814) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -63,11 +63,11 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_07_155948) do
     t.integer "user_id", null: false
     t.string "title", null: false
     t.text "content"
-    t.string "slug"
+    t.string "slug", null: false
     t.string "status", default: "public", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["slug"], name: "index_posts_on_slug"
+    t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["status"], name: "index_posts_on_status"
     t.index ["title"], name: "index_posts_on_title"
     t.index ["user_id"], name: "index_posts_on_user_id"

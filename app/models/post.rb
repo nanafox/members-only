@@ -13,5 +13,11 @@ class Post < ApplicationRecord
         where("created_at > ?", 1.week.ago)
     }
 
+  validates :slug, uniqueness: true
+
   validates :title, :content, :status, presence: :true
+
+  def to_param
+    slug
+  end
 end

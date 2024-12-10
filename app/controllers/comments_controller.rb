@@ -56,7 +56,7 @@ class CommentsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find(params.expect(:post_id))
+    @post = Post.find_by(slug: params.expect(:post_slug))
   end
 
   # Only allow a list of trusted parameters through.

@@ -76,9 +76,9 @@ class PostsController < ApplicationController
     if action_name == :show
       @post = Post.includes(
         :user, :rich_text_content, comments: [ :user ],
-      ).find_by(id: params.expect(:id))
+      ).find_by(slug: params.expect(:slug))
     else
-      @post = Post.find_by(id: params.expect(:id))
+      @post = Post.find_by(slug: params.expect(:slug))
     end
   end
 
