@@ -18,7 +18,7 @@ class PostsTest < ApplicationSystemTestCase
     click_on "New post"
 
     find("trix-editor").set("New Post Title")
-    fill_in "Slug", with: @post.slug
+    fill_in "Slug", with: "new-post-slug"
     select @post.status, from: "Status"
     fill_in "Title", with: @post.title
     click_on "Create Post"
