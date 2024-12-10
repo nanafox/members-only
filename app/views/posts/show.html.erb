@@ -1,6 +1,6 @@
 <%= content_for(:title, "AuthPost | #{@post.user.username} - #{@post.title}") %>
 <div class="m-auto">
-  <div class="mb-2">
+  <div class="mb-2 d-flex gap-2 flex-wrap">
     <%= link_to "Back to posts", posts_path, class: "btn btn-secondary" %>
     <% if user_signed_in? && current_user == @post.user %>
       <%= link_to "Edit", edit_post_path(@post), class: "btn btn-info" %>
