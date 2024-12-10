@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :validate_user!, only: %i[ destroy edit update ]
+  before_action :set_current_user_posts, only: %i[me]
 
   # GET /posts or /posts.json
   def index
@@ -29,6 +30,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+  end
+
+  def me
   end
 
   # POST /posts or /posts.json
@@ -93,5 +97,9 @@ class PostsController < ApplicationController
         status: :see_other,
         alert: "You are not authorized to perform this action!"
     end
+  end
+
+  def set_current_user_posts
+    @posts = current_user.posts
   end
 end
