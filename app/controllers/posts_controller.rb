@@ -12,11 +12,9 @@ class PostsController < ApplicationController
 
     # unauthenticated users should see only public posts
     if user_signed_in?
-      @posts = Post.includes(:user, :rich_text_content).limit(30)
+      @posts = Post.recent.includes(:user).limit(30)
     else
-      @posts = Post.includes(
-        :rich_text_content
-      ).where(status: "public").limit(30)
+      @posts = Post.recent.where(status: "public").limit(30)
     end
   end
 
@@ -75,9 +73,13 @@ class PostsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
-    @post = Post.includes(
-      :comments, :user, :rich_text_content
-    ).find(params.expect(:id))
+    if action_name == :show
+      @post = Post.includes(
+        :user, :rich_text_content, comments: [ :user ],
+      ).find_by(id: params.expect(:id))
+    else
+      @post = Post.find_by(id: params.expect(:id))
+    end
   end
 
   # Only allow a list of trusted parameters through.
