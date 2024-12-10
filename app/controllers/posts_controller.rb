@@ -100,6 +100,6 @@ class PostsController < ApplicationController
   end
 
   def set_current_user_posts
-    @posts = current_user.posts
+    @posts = Post.for_current_user(current_user)
   end
 end
