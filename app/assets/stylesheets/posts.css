@@ -3,3 +3,30 @@
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1rem;
 }
+
+.trix-toolbar {
+  /* background-color: #f8f9fa; */
+  border-radius: 0.25rem;
+}
+
+.rich-text-editor {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+trix-toolbar > * {
+  color: #f8f9fa;
+}
+
+trix-toolbar .trix-button--active {
+  background-color: #6c757d;
+}
+
+input,
+textarea,
+select,
+trix-editor {
+  background-color: #343a40;
+  color: #f8f9fa;
+  border: 1px solid #495057;
+}
