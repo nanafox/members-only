@@ -22,22 +22,20 @@
 </turbo-frame>
 <% if user_signed_in? %>
   <%= render "comments/form", post: @post %>
-<% else %>
-  <%= button_to "Log in to add a comment!",
-  new_user_session_path,
-  class: "btn btn-warning" %>
-<% end %>
-<div class="mt-4 card p-4">
-  <div class="card-body">
-    <h2 class="card-title underline">Comments</h2>
-    <hr>
-    <turbo-frame id="comments">
-      <% if @post.comments.count.zero? %>
+  <div class="mt-4 card p-4">
+    <div class="card-body">
+      <h2 class="card-title">Comments</h2>
+      <hr>
+      <% if @post.comments.size.zero? %>
         <h3 class="fs-5">No comments</h3>
       <% else %>
         <h3 class="fs-5"><%= pluralize(@post.comments.count, "comment") %></h3>
-        <%= render @post.comments %>
-      </turbo-frame>
-    <% end %>
+        <%= render @post.comments.load %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= button_to "Log in to view and add a comment!",
+  new_user_session_path,
+  class: "btn btn-warning" %>
+<% end %>
