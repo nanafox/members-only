@@ -71,7 +71,10 @@ class PostsController < ApplicationController
     @post.destroy!
 
     respond_to do |format|
-      format.html { redirect_to posts_path, status: :see_other, notice: "Post was successfully destroyed." }
+      format.html {
+        redirect_to posts_path,
+          status: :see_other, notice: "Post was successfully destroyed."
+      }
       format.json { head :no_content }
     end
   end
@@ -80,13 +83,7 @@ class PostsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
-    if action_name == :show
-      @post = Post.includes(
-        :user, :rich_text_content, comments: [ :user ],
-      ).find_by(slug: params.expect(:slug))
-    else
-      @post = Post.find_by(slug: params.expect(:slug))
-    end
+    @post = Post.find_by(slug: params[:slug])
   end
 
   # Only allow a list of trusted parameters through.
