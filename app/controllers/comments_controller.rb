@@ -52,7 +52,13 @@ class CommentsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_comment
-    @comment = @post.comments.find(params.expect(:id))
+    if action_name == :show
+      # eager load comments from the posts association
+      @comment = @post.comments.find_by(id: params[:id])
+    else
+      # don't perform eager loading for all other actions
+      @comment = Comment.find(params.expect(:id))
+    end
   end
 
   def set_post
