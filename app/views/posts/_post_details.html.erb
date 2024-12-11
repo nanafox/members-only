@@ -1,6 +1,7 @@
 <div class="d-flex align-content-center gap-2">
   <p>Posted by:
     <%= post.user.fullname %>
+    <%= render "users/shared/follow_button", user: post.user, post: post %>
   </p>
   <div>
     <span class="badge round-pill <%= status_class(post.status) %>">
