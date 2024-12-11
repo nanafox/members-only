@@ -13,6 +13,10 @@ Rails.application.routes.draw do
       unlock: "unblock", registration: "register", sign_up: "sign_up"
     },
     controllers: { registrations: "users/registrations" }
+
+  post "/follow/:user_id", to: "users/followers#follow", as: :follow_user
+  delete "/unfollow/:user_id", to: "users/followers#unfollow", as: :unfollow_user
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
