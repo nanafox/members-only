@@ -32,6 +32,9 @@ class PostsController < ApplicationController
   def edit
   end
 
+  # GET /posts/me
+  #
+  # This returns the posts for the current authenticated user
   def me
   end
 
