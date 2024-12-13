@@ -2,15 +2,17 @@ class Post < ApplicationRecord
   include Visible
 
   belongs_to :user
-
   has_rich_text :content
+
+  before_save :cleanup_slug
 
   has_many :comments, -> {
       includes(:user, { replies: :replies }).order(created_at: :desc)
     }, dependent: :delete_all
 
   scope :recent, -> {
-      order(created_at: :desc).includes(:rich_text_content)
+      order(created_at: :desc)
+        .includes(:rich_text_content)
         .where("created_at > ?", 1.week.ago)
     }
 
@@ -27,5 +29,11 @@ class Post < ApplicationRecord
   # Change the param from id to slug for posts
   def to_param
     slug
+  end
+
+  private
+
+  def cleanup_slug
+    slug.gsub!(/[\s\_]/, "-").downcase! unless slug.blank?
   end
 end
