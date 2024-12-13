@@ -88,7 +88,7 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.expect(post: [ :title, :content, :slug, :status ])
+    params.expect(post: [ :title, :content, :status ])
   end
 
   def validate_user!

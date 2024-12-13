@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_rich_text :content
 
-  before_save :cleanup_slug
+  before_save :set_slug
 
   has_many :comments, -> {
       includes(:user, { replies: :replies }).order(created_at: :desc)
@@ -33,7 +33,15 @@ class Post < ApplicationRecord
 
   private
 
-  def cleanup_slug
-    slug.gsub!(/[\s\_]/, "-").downcase! unless slug.blank?
+  def set_slug
+    pattern = /[\W\s]/
+    replacement = "-"
+    unless title.blank?
+      if title_changed?
+        self.slug = "#{title.gsub(pattern, replacement).downcase}-#{SecureRandom.urlsafe_base64}".downcase
+      else
+        self.slug ||= "#{title.gsub(pattern, replacement).downcase}-#{SecureRandom.urlsafe_base64}".downcase
+      end
+    end
   end
 end
