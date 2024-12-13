@@ -1,15 +1,18 @@
 <% if comment.persisted? %>
   <% unless comment.reply? %>
     <%= render "comments/comment_helper", comment: comment %>
-    <% unless comment.replies.empty? %>
-      <h3 class="mt-3 ms-4 fs-6 badge round-pill bg-secondary">Replies</h3>
-      <% comment.replies.each do |reply| %>
-        <div class="ms-5">
-          <hr>
-          <%= render "comments/comment_helper", comment: reply %>
-        </div>
+    <div class="ms-4">
+      <%= render "replies/form", post: comment.post, comment: comment %>
+      <% unless comment.replies.empty? %>
+        <h3 class="mt-3 ms-4 fs-6 badge round-pill bg-secondary">Replies</h3>
+        <% comment.replies.each do |reply| %>
+          <div class="ms-5">
+            <hr>
+            <%= render "comments/comment_helper", comment: reply %>
+          </div>
+        <% end %>
       <% end %>
       <hr>
-    <% end %>
+    </div>
   <% end %>
 <% end %>

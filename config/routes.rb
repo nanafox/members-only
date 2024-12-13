@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get "/posts/me", to: "posts#me", as: :current_user_posts
   resources :posts, param: :slug do
-    resources :comments, only: [ :create, :edit, :update, :destroy ]
+    resources :comments, only: [ :create, :edit, :update, :destroy ] do
+      resources :replies, only: [ :create ]
+    end
   end
 
   # devise_for :users
