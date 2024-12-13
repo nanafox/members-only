@@ -1,5 +1,5 @@
 <%= form_with url: post_comment_replies_path(post.slug, comment.id), action: "post" do |form| %>
-  <div class="mt-5">
+  <div class="mt-2">
     <%= form.label "reply[content]", "Add a reply", class: "form-label" %>
     <%= form.text_area "reply[content]",
                    class: "form-control",
