@@ -28,6 +28,10 @@
           <% end %>
           <p class="card-text">
             <%= truncate(post.content.to_plain_text, length: 200) %>
+            <%= button_to "View post",
+            post_path(post),
+            method: :get,
+            class: "btn btn-info ms-auto" %>
           </p>
         </div>
       </article>
