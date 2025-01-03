@@ -13,7 +13,6 @@ class Post < ApplicationRecord
   scope :recent, -> {
       order(created_at: :desc)
         .includes(:rich_text_content)
-        .where("created_at > ?", 1.week.ago)
     }
 
   scope :for_current_user, ->(current_user) {
