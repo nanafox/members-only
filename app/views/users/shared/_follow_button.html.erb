@@ -1,20 +1,15 @@
 <turbo-frame id=<%= "user_#{user.id}_follow" %>>
   <% unless current_user == user %>
     <% if current_user.follows?(user) %>
-      <%= link_to "Unfollow",
+      <%= button_to "Unfollow",
       unfollow_user_path(user),
-      class: "badge bg-danger text-decoration-none",
-      data: {
-        turbo_method: :delete,
-        turbo_confirm: "Are you sure you want to unfollow this user?",
-      } %>
+      class: "badge bg-danger text-decoration-none border-0",
+      method: :delete,
+      confirm: "Are you sure you want to unfollow this author?" %>
     <% else %>
-      <%= link_to "Follow",
+      <%= button_to "Follow",
       follow_user_path(user),
-      class: "badge bg-white text-black text-decoration-none",
-      data: {
-        turbo_method: :post,
-      } %>
+      class: "badge bg-white text-black text-decoration-none border-0" %>
     <% end %>
   <% end %>
 </turbo-frame>
