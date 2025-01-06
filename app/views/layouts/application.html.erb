@@ -23,7 +23,7 @@
       <%= javascript_importmap_tags %>
       <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     </head>
-    <body class="text-white" data-turbo="false">
+    <body class="text-white">
       <header>
         <nav class="navbar navbar-expand-lg bg-dark text-white pt-2">
           <div class="container-fluid text-white">
@@ -75,7 +75,6 @@
                       <li class="nav-item text-white"><%= link_to "Sign out",
                     destroy_user_session_path,
                     data: {
-                      turbo: true,
                       turbo_method: :delete,
                       turbo_confirm: "Are you sure you want to log out?",
                     },
