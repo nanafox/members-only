@@ -5,8 +5,9 @@ class Comment < ApplicationRecord
   validates_associated :post, :user
   validates :content, presence: true
 
-  has_many :replies,
-    class_name: "Comment", foreign_key: "reply_id", dependent: :destroy
+  has_many :replies, -> {
+      includes(:user).order(created_at: :desc)
+    }, class_name: "Comment", foreign_key: "reply_id", dependent: :destroy
 
   belongs_to :reply, class_name: "Comment", optional: true
 
