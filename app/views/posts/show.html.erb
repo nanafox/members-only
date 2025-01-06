@@ -10,16 +10,13 @@
       @post,
       data: {
         turbo_method: :delete,
-        confirm: "Are you sure?",
         turbo_confirm: "Are you sure?",
       },
       class: "btn btn-danger" %>
     <% end %>
   </div>
 </div>
-<turbo-frame id="post">
-  <%= render @post %>
-</turbo-frame>
+<%= render @post %>
 <% if user_signed_in? %>
   <%= render "comments/form", post: @post %>
   <div class="mt-4 card p-4">
