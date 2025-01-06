@@ -1,6 +1,8 @@
 <% if comment.persisted? %>
   <% unless comment.reply? %>
-    <%= render "comments/comment_helper", comment: comment %>
+    <%= turbo_frame_tag comment do %>
+      <%= render "comments/comment_helper", comment: comment %>
+    <% end %>
     <div class="ms-4">
       <%= render "replies/form", post: comment.post, comment: comment %>
       <% unless comment.replies.empty? %>
@@ -8,7 +10,9 @@
         <% comment.replies.each do |reply| %>
           <div class="ms-5">
             <hr>
-            <%= render "comments/comment_helper", comment: reply %>
+            <%= turbo_frame_tag reply do %>
+              <%= render "comments/comment_helper", comment: reply %>
+            <% end %>
           </div>
         <% end %>
       <% end %>
