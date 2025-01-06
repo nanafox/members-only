@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :validate_user!, only: %i[ destroy edit update ]
-  before_action :set_current_user_posts, only: %i[me]
+  before_action :set_current_user_posts, only: %i[ me ]
 
   # GET /posts or /posts.json
   def index
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: "Post was successfully created." }
+        format.html { redirect_to @post }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: "Post was successfully updated." }
+        format.html { redirect_to @post }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit, status: :unprocessable_entity }
