@@ -4,13 +4,13 @@
     <%= turbo_frame_tag "new_post", src: new_post_path %>
   </div>
 <% end %>
-<% if Post.count.zero? %>
-  <h2 class="fs-5">No Posts found at the moment</h2>
-  <% unless user_signed_in? %>
-    <%= link_to "Create one today!", new_post_path, class: "btn btn-info" %>
-  <% end %>
-<% else %>
-  <div id="posts">
+<div id="posts">
+  <% if Post.count.zero? %>
+    <h2 class="fs-5">No Posts found at the moment</h2>
+    <% unless user_signed_in? %>
+      <%= link_to "Create one today!", new_post_path, class: "btn btn-info" %>
+    <% end %>
+  <% else %>
     <%= render @posts %>
-  </div>
-<% end %>
+  <% end %>
+</div>
