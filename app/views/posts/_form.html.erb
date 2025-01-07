@@ -14,12 +14,14 @@
     <div class="pb-2">
       <%= form.label :title, class: "form-label card-text" %>
       <%= form.text_field :title,
+                      required: true,
                       class: "form-control",
                       placeholder: "What's on your mind?" %>
     </div>
     <div class="trix-toolbar rounded pb-2">
       <%= form.label :content, class: "form-label card-text" %>
       <%= form.rich_textarea :content,
+                         required: true,
                          class: "form-control",
                          placeholder: "Share your story with the world..." %>
     </div>
