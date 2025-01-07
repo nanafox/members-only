@@ -1,10 +1,22 @@
-<article
-  <%= dom_id(post) %> class="card-body">
-  <h2 class="card-title fs-3 text-info"><%= post.title %></h2>
-  <% if user_signed_in? %>
-    <%= render "post_details", post: post %>
-  <% end %>
-  <p class="card-text">
-    <%= post.content %>
-  </p>
+<article id="<%= dom_id(post) %>" class="card p-2 text-bg-dark">
+  <div class="card-body">
+    <h2 class="card-title fs-4">
+      <%= link_to post.title,
+      post_path(post),
+      class:
+        "link-info link-offset-2 link-underline-opacity-75-hover text-decoration-none" %>
+    </h2>
+    <hr>
+    <% if user_signed_in? %>
+      <%= render "post_details", post: post %>
+    <% end %>
+    <div class="d-flex flex-column gap-4">
+      <p class="card-text">
+        <%= truncate(post.content.to_plain_text, length: 200) %>
+      </p>
+      <div>
+        <%= link_to "View post", post_path(post), class: "btn btn-info ms-auto" %>
+      </div>
+    </div>
+  </div>
 </article>

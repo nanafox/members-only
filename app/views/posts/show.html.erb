@@ -16,7 +16,16 @@
     <% end %>
   </div>
 </div>
-<%= render @post %>
+<article
+  <%= dom_id(@post) %> class="card-body">
+  <h2 class="card-title fs-3 text-info"><%= @post.title %></h2>
+  <% if user_signed_in? %>
+    <%= render "post_details", post: @post %>
+  <% end %>
+  <p class="card-text">
+    <%= @post.content %>
+  </p>
+</article>
 <% if user_signed_in? %>
   <%= render "comments/form", post: @post %>
   <div class="mt-4 card p-4">
