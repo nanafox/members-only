@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
     # unauthenticated users should see only public posts
     if user_signed_in?
-      @posts = Post.recent.includes(:user).limit(30)
+      @posts = Post.recent.includes(:author).limit(30)
     else
       @posts = Post.recent.where(status: "public").limit(30)
     end
@@ -44,6 +44,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        format.turbo_stream
         format.html { redirect_to @post }
         format.json { render :show, status: :created, location: @post }
       else
@@ -92,7 +93,7 @@ class PostsController < ApplicationController
   end
 
   def validate_user!
-    if current_user != @post.user
+    if current_user != @post.author
       redirect_to post_path(@post),
         status: :see_other,
         alert: "You are not authorized to perform this action!"

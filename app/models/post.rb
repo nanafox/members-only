@@ -1,13 +1,13 @@
 class Post < ApplicationRecord
   include Visible
 
-  belongs_to :user
+  belongs_to :author, class_name: "User", foreign_key: "user_id"
   has_rich_text :content
 
   before_save :set_slug
 
   has_many :comments, -> {
-      includes(:user, { replies: :replies }).order(created_at: :desc)
+      includes(:author, { replies: :replies }).order(created_at: :desc)
     }, dependent: :delete_all
 
   scope :recent, -> {
@@ -28,6 +28,11 @@ class Post < ApplicationRecord
   # Change the param from id to slug for posts
   def to_param
     slug
+  end
+
+  # The user method is an alias for the author method
+  def user
+    author
   end
 
   private
