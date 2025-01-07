@@ -13,11 +13,15 @@
     <% end %>
     <div class="pb-2">
       <%= form.label :title, class: "form-label card-text" %>
-      <%= form.text_field :title, class: "form-control" %>
+      <%= form.text_field :title,
+                      class: "form-control",
+                      placeholder: "What's on your mind?" %>
     </div>
     <div class="trix-toolbar rounded pb-2">
       <%= form.label :content, class: "form-label card-text" %>
-      <%= form.rich_textarea :content, class: "form-control" %>
+      <%= form.rich_textarea :content,
+                         class: "form-control",
+                         placeholder: "Share your story with the world..." %>
     </div>
     <div>
       <%= form.label :status, class: "form-label card-text" %>
