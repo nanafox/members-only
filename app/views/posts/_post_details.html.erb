@@ -1,8 +1,13 @@
-<div class="d-flex align-content-center gap-2" data-turbo="false">
+<div
+  class="d-flex align-content-center gap-2"
+  id="<%= "post_details_#{dom_id(post.author)}" %>"
+>
   <p>Posted by:
-    <%= post.user.fullname %>
-    <%= render "users/shared/follow_button", user: post.user, post: post %>
+    <%= post.author.fullname %>
   </p>
+  <%= turbo_frame_tag "follow_#{dom_id(post.author)}" do %>
+    <%= render "users/shared/follow_button", user: post.author %>
+  <% end %>
   <div>
     <span class="badge round-pill <%= status_class(post.status) %>">
       <%= post.status.capitalize %>
