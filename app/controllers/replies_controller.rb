@@ -24,6 +24,6 @@ class RepliesController < ApplicationController
   end
 
   def reply_params
-    params.expect(reply: [ :content ]).merge({ user: current_user, post: @post })
+    params.expect(reply: [ :content ]).merge({ author: current_user, post: @post })
   end
 end
