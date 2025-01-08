@@ -14,8 +14,17 @@
       <p class="card-text">
         <%= truncate(post.content.to_plain_text, length: 200) %>
       </p>
-      <div>
-        <%= link_to "View post", post_path(post), class: "btn btn-info ms-auto" %>
+      <div class="d-flex justify-content-between">
+        <%= link_to "View post", post_path(post), class: "btn btn-info" %>
+        <% if user_signed_in? && current_user == post.author %>
+          <%= link_to "Delete",
+          post,
+          class: "btn btn-danger",
+          data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?",
+          } %>
+        <% end %>
       </div>
     </div>
   </div>
