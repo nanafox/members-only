@@ -10,24 +10,24 @@
       name="description"
       content="AuthPost is a simple platform where authenticated users share insights about themselves and anything they want people to know about them. This is a TheOdinProject project."
     >
-      <%= csrf_meta_tags %>
-      <%= csp_meta_tag %>
-      <%= yield :head %>
-      <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-      <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-      <link rel="icon" href="/icon.png" type="image/png">
-      <link rel="icon" href="/icon.svg" type="image/svg+xml">
-      <link rel="apple-touch-icon" href="/icon.png">
-      <%# Includes all stylesheet files in app/assets/stylesheets %>
-      <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-      <%= javascript_importmap_tags %>
-    </head>
-    <body class="text-white">
-      <header>
-        <nav class="navbar navbar-expand-lg bg-dark text-white pt-2">
-          <div class="container-fluid text-white">
-            <%= link_to "AuthPost", root_path, class: "navbar-brand text-white" %>
-            <button
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= yield :head %>
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body class="text-white">
+    <header>
+      <nav class="navbar navbar-expand-lg bg-dark text-white pt-2">
+        <div class="container-fluid text-white">
+          <%= link_to "AuthPost", root_path, class: "navbar-brand text-white" %>
+          <button
             class="navbar-toggler text-white bg-white"
             type="button"
             data-bs-toggle="collapse"
@@ -36,130 +36,130 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
-                <li class="nav-item">
-                  <%= link_to "Home",
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
+              <li class="nav-item">
+                <%= link_to "Home",
                 root_path,
                 class: "nav-link active text-white",
                 aria_current: "page" %>
-                </li>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">About</a>
+              </li>
+              <li class="nav-item">
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="#">About</a>
+                  <%= link_to "https://github.com/nanafox/members-only", class: "nav-link d-flex align-items-center text-decoration-none text-white", target: "_blank" do %>
+                    <i class="bi bi-github me-2 text-white"></i>Source Code
+                  <% end %>
                 </li>
-                <li class="nav-item">
-                  <li class="nav-item">
-                    <%= link_to "https://github.com/nanafox/members-only", class: "nav-link d-flex align-items-center text-decoration-none text-white", target: "_blank" do %>
-                      <i class="bi bi-github me-2 text-white"></i>Source Code
-                    <% end %>
-                  </li>
-                </li>
-              </ul>
-              <form class="d-flex" role="search">
-                <input
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input
                 class="form-control me-2"
                 type="search"
                 placeholder="Search for posts"
                 aria-label="Search"
               >
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <div>
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <% if user_signed_in? %>
-                      <li nav-item><%= link_to "My Posts", current_user_posts_path, class: "nav-link text-white" %></li>
-                      <li nav-item><%= link_to "Profile", edit_user_registration_path, class: "nav-link text-white" %></li>
-                      <li class="nav-item text-white"><%= link_to "Sign out",
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <% if user_signed_in? %>
+                  <li nav-item><%= link_to "My Posts", current_user_posts_path, class: "nav-link text-white" %></li>
+                  <li nav-item><%= link_to "Profile", edit_user_registration_path, class: "nav-link text-white" %></li>
+                  <li class="nav-item text-white"><%= link_to "Sign out",
                     destroy_user_session_path,
                     data: {
                       turbo_method: :delete,
                       turbo_confirm: "Are you sure you want to log out?",
                     },
                     class: "nav-link text-white" %></li>
-                    <% else %>
-                      <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link text-white" %></li>
-                      <li class="nav-item"><%= link_to "Sign in", new_user_session_path, class: "nav-link text-white" %></li>
-                    <% end %>
-                  </ul>
-                </div>
-              </div>
+                <% else %>
+                  <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link text-white" %></li>
+                  <li class="nav-item"><%= link_to "Sign in", new_user_session_path, class: "nav-link text-white" %></li>
+                <% end %>
+              </ul>
             </div>
-          </nav>
-        </header>
-        <section
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section
       id="main"
       class="py-4"
       style="background-color: rgba(33,37, 41, 0.95);"
     >
-          <main class="container">
-            <% if notice %>
-              <p class="notice alert alert-info mt-2" role="alert"><%= notice %></p>
-            <% end %>
-            <% if alert %>
-              <p class="alert alert-warning mt-2" role="alert"><%= alert %></p>
-            <% end %>
-            <%= yield %>
-          </main>
-        </section>
-        <footer class="bg-dark text-white py-4 position-relative">
-          <div class="container">
-            <div class="row">
-              <!-- About Section -->
-              <div class="col-12 col-md-4 mb-3">
-                <h5>About</h5>
-                <p>This project is part of the
-                  <%= link_to "The Odin Project",
+      <main class="container">
+        <% if notice %>
+          <p class="notice alert alert-info mt-2" role="alert"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-warning mt-2" role="alert"><%= alert %></p>
+        <% end %>
+        <%= yield %>
+      </main>
+    </section>
+    <footer class="bg-dark text-white py-4 position-relative">
+      <div class="container">
+        <div class="row">
+          <!-- About Section -->
+          <div class="col-12 col-md-4 mb-3">
+            <h5>About</h5>
+            <p>This project is part of the
+              <%= link_to "The Odin Project",
               "https://theodinproject.com",
               class: "text-white link-opacity-75-hover" %>
-                  Ruby on Rails curriculum</p>
-              </div>
-              <!-- Quick Links Section -->
-              <div class="col-12 col-md-4 mb-3">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled d-flex flex-wrap gap-4">
-                  <li><%= link_to "Home", root_path, class: "text-white text-decoration-none" %></li>
-                  <li><%= link_to "About", "#", class: "text-white text-decoration-none" %></li>
-                  <li><%= link_to "Register",
+              Ruby on Rails curriculum</p>
+          </div>
+          <!-- Quick Links Section -->
+          <div class="col-12 col-md-4 mb-3">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled d-flex flex-wrap gap-4">
+              <li><%= link_to "Home", root_path, class: "text-white text-decoration-none" %></li>
+              <li><%= link_to "About", "#", class: "text-white text-decoration-none" %></li>
+              <li><%= link_to "Register",
                 new_user_registration_path,
                 class: "text-white text-decoration-none" %></li>
-                  <li><%= link_to "Sign in",
+              <li><%= link_to "Sign in",
                 new_user_session_path,
                 class: "text-white text-decoration-none" %></li>
-                </ul>
-              </div>
-              <!-- Contact Section -->
-              <div class="col-12 col-md-4 mb-3">
-                <h5>Contact Me</h5>
-                <address>
-                  <strong>Maxwell Nana Forson</strong><br>
-                </address>
-                <div id="links" class="d-flex flex-wrap gap-2">
-                  <%= link_to "https://github.com/nanafox", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                    <i class="bi bi-github me-2"></i>GitHub
-                  <% end %>
-                  <%= link_to "https://x.com/_nanafox", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                    <i class="bi bi-twitter me-2"></i>_nanafox
-                  <% end %>
-                  <%= link_to "https://wa.me/233594059579", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                    <i class="bi bi-whatsapp me-2"></i>WhatsApp
-                  <% end %>
-                  <%= link_to "https://www.linkedin.com/in/maxwellnanaforson", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                    <i class="bi bi-linkedin me-2"></i>LinkedIn
-                  <% end %>
-                  <%= link_to "https://www.mnforson.live", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
-                    <i class="bi bi-house-door me-2"></i>Website
-                  <% end %>
-                </div>
-              </div>
-            </div>
-            <div class="text-center mt-3">
-              <small>&copy;
-                <%= Time.current.year %>
-                AuthPost. All rights reserved.</small>
+            </ul>
+          </div>
+          <!-- Contact Section -->
+          <div class="col-12 col-md-4 mb-3">
+            <h5>Contact Me</h5>
+            <address>
+              <strong>Maxwell Nana Forson</strong><br>
+            </address>
+            <div id="links" class="d-flex flex-wrap gap-2">
+              <%= link_to "https://github.com/nanafox", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
+                <i class="bi bi-github me-2"></i>GitHub
+              <% end %>
+              <%= link_to "https://x.com/_nanafox", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
+                <i class="bi bi-twitter me-2"></i>_nanafox
+              <% end %>
+              <%= link_to "https://wa.me/233594059579", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
+                <i class="bi bi-whatsapp me-2"></i>WhatsApp
+              <% end %>
+              <%= link_to "https://www.linkedin.com/in/maxwellnanaforson", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
+                <i class="bi bi-linkedin me-2"></i>LinkedIn
+              <% end %>
+              <%= link_to "https://www.mnforson.live", class: "text-white d-flex align-items-center text-decoration-none", target: "_blank" do %>
+                <i class="bi bi-house-door me-2"></i>Website
+              <% end %>
             </div>
           </div>
-        </footer>
-      </body>
-    </html>
+        </div>
+        <div class="text-center mt-3">
+          <small>&copy;
+            <%= Time.current.year %>
+            AuthPost. All rights reserved.</small>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
