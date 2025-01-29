@@ -18,7 +18,7 @@
 </div>
 <article
   <%= dom_id(@post) %> class="card-body">
-  <h2 class="card-title fs-3 text-info"><%= @post.title %></h2>
+  <h2 class="card-title fs-1 text-info"><%= @post.title %></h2>
   <% if user_signed_in? %>
     <%= render "post_details", post: @post %>
   <% end %>
