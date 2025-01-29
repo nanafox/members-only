@@ -17,8 +17,8 @@ class Post < ApplicationRecord
 
   scope :for_current_user, ->(current_user) {
       order(created_at: :desc)
-        .includes(:rich_text_content, :user)
-        .where(user: current_user)
+        .includes(:rich_text_content, :author)
+        .where(author: current_user)
     }
 
   validates :slug, uniqueness: true
