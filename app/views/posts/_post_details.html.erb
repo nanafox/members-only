@@ -5,9 +5,14 @@
   <p>Posted by:
     <%= post.author.fullname %>
   </p>
-  <%= turbo_frame_tag "follow_#{dom_id(post.author)}" do %>
-    <%= render "users/shared/follow_button", user: post.author %>
+
+  <%# Render the follow button if the post author is not the current user %>
+  <% unless post.author == current_user %>
+    <%= turbo_frame_tag "follow_#{dom_id(post.author)}" do %>
+      <%= render "users/shared/follow_button", user: post.author %>
+    <% end %>
   <% end %>
+
   <div>
     <span class="badge round-pill <%= status_class(post.status) %>">
       <%= post.status.capitalize %>
