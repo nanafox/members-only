@@ -1,5 +1,10 @@
 <h1 class="fs-1 mb-4">My Posts</h1>
 
-<div id="posts">
-  <%= render @posts %>
-</div>
+<% if @posts.empty? %>
+  <h2 class="fs-5">No Posts found at the moment</h2>
+  <%= link_to "Create one today!", new_post_path, class: "btn btn-info" %>
+<% else %>
+  <div id="posts">
+    <%= render @posts %>
+  </div>
+<% end %>
